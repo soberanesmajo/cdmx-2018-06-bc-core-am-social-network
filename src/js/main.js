@@ -7,6 +7,11 @@ const logout = document.getElementById('logout').addEventListener('click', event
   location.href = '../index.html';
 });
 
+// Bienvenida a usuario registrado
+// const greet = document.getElementById('welcome');
+// greet.innerHTML = `¡Bienvenidx ${signupNameValue}`;
+
+
 const publishButton = document.getElementById('publish').addEventListener('click', event => { // Evento que detona el botón de 'publicar'
   event.preventDefault();
   let postDate = `${new Date()}`; // Esta variable, publica la hora en el post
