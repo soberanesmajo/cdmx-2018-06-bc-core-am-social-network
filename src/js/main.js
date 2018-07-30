@@ -35,6 +35,7 @@ const publicar = () => {
   });
 };
 
+
 const drawPost = () => {
   const postContainer = document.getElementById('publications'); // Este id es el contenedor que pinta las publicaciones.
   db.collection('post').onSnapshot((querySnapshot) => { // onSnapshot es un agente de escucha, que va a estar 'escuchando' cada que se haga un cambio en la base de datos.
@@ -45,14 +46,14 @@ const drawPost = () => {
                                      <p>${doc.data().date}</p>
                                     </div>
                                     <div class="card-body">
-                                      <h6 class="card-text">${doc.data().content}</h6>
+                                      <h6 class="card-text" id="user${doc.id}">${doc.data().content}</h6>
                                     </div>
                                     <div class="card-footer1 mr-auto">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                        <button class="btn btn-info1  float-right">
                                          <i class="fas fa-heart"></i> 0
                                        </button>
-                                       <button class="btn btn-info1 float-right">
+                                       <button class="btn btn-info1 float-right" onclick ="editPost('${doc.id}')">
                                         <i class="fas fa-edit"></i> Editar
                                        </button>
                                        <button class="btn btn-info1 float-right" onclick ="deletePost('${doc.id}')">
@@ -60,13 +61,28 @@ const drawPost = () => {
                                        </button>
                                     </div>
                                    </div>
-                                    <div class="card-footer1 mr-auto">
-                                      <input id="comment" type="text"> 
-                                      <button class="btn btn-info1 float-right"><i class="fas fa-comment-alt"></i></button>
-                                      </div>
                                 </div>
                                 <br/>`;
     });
+  });
+};
+
+const editPost = (id) => { // Id es el parámetro del post a editar
+  db.collection('post').doc(id).get() // entra a post y entra en el comentario con el ID especificado y lo llama
+    .then(res => { // Obtiene la respuesta
+      const currentContent = res.data().content; // Declaramos variable que contiene al post
+      document.getElementById(`user${res.id}`).innerHTML = `<textarea cols="30" id="text${res.id}">${currentContent} </textarea> <button class="btn btn-info1 float-right" onclick ="saveEditedPost('${res.id}')"><i class="fas fa-save"></i></button> `;
+    }); // Imprime un textarea con el contenido del post para habilitar la edición y llama a la función "saveEditedPost"
+};
+
+const saveEditedPost = (id) => {
+  const newContent = document.getElementById(`text${id}`).value; // Guarda los nuevos datos del post
+  console.log(newContent);
+  db.collection('post').doc(id).update({ // Actualizamos el post con el id especificado 
+    content: newContent // Le dice a firebase que el contenido del post es equivalente al nuevo contenido
+  }).then(res => {
+    alert('Publicacion Editada'); // Muestra una alerta de que la edicion fue exitosa
+    drawPost(); // llama a drawPost para que pinte el post actualizado
   });
 };
 
@@ -79,6 +95,7 @@ function deletePost(id) {
     });
   }
 };
+
 
 publicar();
 drawPost();

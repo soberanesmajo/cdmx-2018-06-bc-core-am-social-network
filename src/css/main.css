@@ -6,6 +6,11 @@ section div {
   font-size: 100%;
 }
 
+textarea {
+  border: none;
+  width: 100%;
+}
+
 .registro {
   background-color: #ebddec70;
 }
@@ -35,9 +40,9 @@ nav.navbar {
 }
 
 .card-round {
-  border-radius: 35px 35px 35px 35px !important;
-  -moz-border-radius: 35px 35px 35px 35px !important;
-  -webkit-border-radius: 35px 35px 35px 35px !important;
+  border-radius: 19px 19px 19px 19px !important;
+  -moz-border-radius: 19px 19px 19px 19px !important;
+  -webkit-border-radius: 19px 19px 19px 19px !important;
   border: 0px solid #000000 !important;
 }
 
@@ -70,6 +75,16 @@ nav.navbar {
   -moz-border-radius: 100px 100px 100px 100px;
   -webkit-border-radius: 100px 100px 100px 100px;
   border: 0px solid #000000;
+}
+
+.feelings-form {
+  padding: 4%;
+}
+
+.textarea-profile {
+  -webkit-border-radius: 14px 14px 14px 14px;
+  border: 1px solid #9df7f0c7;
+  box-shadow: 1px 1px 5px #33534f52;
 }
 
 /* Perfil */
@@ -178,7 +193,7 @@ nav.navbar {
 label {
   color: #573fa8
 }
-
+/* Media Queries */
 @media only screen and (min-width: 1025px) {
   .loginBody {
     background-image: url("https://image.ibb.co/hHPh3o/descarga.gif");
