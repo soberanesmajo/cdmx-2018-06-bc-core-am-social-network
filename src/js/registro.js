@@ -22,7 +22,6 @@ signup.addEventListener('click', event => {
   
 firebase.auth().onAuthStateChanged(firebaseUser => { // cuando detecta que el usuario se ha "logeado"
   if (firebaseUser) {
-    // console.log(firebaseUser);
     location.href = '../views/muro.html';
   } else {
     console.log('not logged in');
