@@ -35,15 +35,6 @@ const publicar = () => {
   });
 };
 
-function deletePost(id) {
-  db.collection('post').doc(id).delete().then(function() {
-    console.log('Document successfully deleted!');
-  }).catch(function(error) {
-    console.error('Error removing document: ', error);
-  });
-};
-
-
 const drawPost = () => {
   const postContainer = document.getElementById('publications'); // Este id es el contenedor que pinta las publicaciones.
   db.collection('post').onSnapshot((querySnapshot) => { // onSnapshot es un agente de escucha, que va a estar 'escuchando' cada que se haga un cambio en la base de datos.
@@ -78,5 +69,16 @@ const drawPost = () => {
     });
   });
 };
+
+function deletePost(id) {
+  if (confirm('¿Estás segurx de querer eliminar este post?') === true) { 
+    db.collection('post').doc(id).delete().then(function() {
+      console.log('Document successfully deleted!');
+    }).catch(function(error) {
+      console.error('Error removing document: ', error);
+    });
+  }
+};
+
 publicar();
 drawPost();
