@@ -9,7 +9,7 @@ const logout = document.getElementById('logout').addEventListener('click', event
 
 const publicar = () => {
   firebase.auth().onAuthStateChanged(user => {
-    if (user) {
+    if (user) {  
       document.getElementById('publish').addEventListener('click', event => { // Evento que detona el botón de 'publicar'
         event.preventDefault();
         let postDate = firebase.firestore.FieldValue.serverTimestamp();
