@@ -9,7 +9,7 @@ const logout = document.getElementById('logout').addEventListener('click', event
 
 const publicar = () => {
   firebase.auth().onAuthStateChanged(user => {
-    if (user) {  
+    if (user) {
       document.getElementById('publish').addEventListener('click', event => { // Evento que detona el botón de 'publicar'
         event.preventDefault();
         let postDate = firebase.firestore.FieldValue.serverTimestamp();
@@ -38,7 +38,7 @@ const publicar = () => {
 const drawPost = () => {
   const postContainer = document.getElementById('publications'); // Este id es el contenedor que pinta las publicaciones.
   db.collection('post').onSnapshot((querySnapshot) => { // onSnapshot es un agente de escucha, que va a estar 'escuchando' cada que se haga un cambio en la base de datos.
-    querySnapshot.forEach((doc) => { 
+    querySnapshot.forEach((doc) => {
       postContainer.innerHTML += `<div class="card card-post card-round" my-5 px-2>
                                    <div class="card-header1" id= "${doc.id}">
                                      <h5> <i class="fas fa-user-circle"></i> ${doc.data().userID}</h5>
@@ -71,7 +71,7 @@ const drawPost = () => {
 };
 
 function deletePost(id) {
-  if (confirm('¿Estás segurx de querer eliminar este post?') === true) { 
+  if (confirm('¿Estás segurx de querer eliminar este post?') === true) {
     db.collection('post').doc(id).delete().then(function() {
       console.log('Document successfully deleted!');
     }).catch(function(error) {
@@ -82,3 +82,4 @@ function deletePost(id) {
 
 publicar();
 drawPost();
+
