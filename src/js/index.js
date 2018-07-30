@@ -67,4 +67,3 @@ loginFacebook.addEventListener('click', event => {
       location.href = 'views/muro.html';
     });
 });
-
