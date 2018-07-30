@@ -193,7 +193,7 @@ nav.navbar {
 label {
   color: #573fa8
 }
-
+/* Media Queries */
 @media only screen and (min-width: 1025px) {
   .loginBody {
     background-image: url("https://image.ibb.co/hHPh3o/descarga.gif");

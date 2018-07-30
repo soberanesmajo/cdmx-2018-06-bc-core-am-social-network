@@ -35,14 +35,6 @@ const publicar = () => {
   });
 };
 
-function deletePost(id) {
-  db.collection('post').doc(id).delete().then(function () {
-    console.log('Document successfully deleted!');
-  }).catch(function (error) {
-    console.error('Error removing document: ', error);
-  });
-};
-
 
 const drawPost = () => {
   const postContainer = document.getElementById('publications'); // Este id es el contenedor que pinta las publicaciones.
@@ -94,6 +86,17 @@ const saveEditedPost = (id) => {
   });
 };
 
+function deletePost(id) {
+  if (confirm('¿Estás segurx de querer eliminar este post?') === true) {
+    db.collection('post').doc(id).delete().then(function() {
+      console.log('Document successfully deleted!');
+    }).catch(function(error) {
+      console.error('Error removing document: ', error);
+    });
+  }
+};
+
 
 publicar();
 drawPost();
+
