@@ -56,4 +56,4 @@ Para la inversionista, InsideOut es un modelo de negocio a largo a plazo. Una ve
 
 ## **Benchmark**
 
-![Benchmark](src/UX/Images/Benchmark.png).
+![Benchmark](src/UX/Images/Benchmark.png)
