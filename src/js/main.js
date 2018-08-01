@@ -1,7 +1,7 @@
 socialNetwork.initializeFirebase();
 let db = firebase.firestore(); // Variable que inicializa Firestore
 
-
+// Botón de salir en perfil
 const logout = document.getElementById('logout').addEventListener('click', event => {
   firebase.auth().signOut();
   location.href = '../index.html';
